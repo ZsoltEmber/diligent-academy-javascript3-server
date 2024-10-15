@@ -1,8 +1,8 @@
-export default function addTodo() {
+export const addTodo = (todoName) => {
     fetch("http://localhost:3000/todo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ todo: "first" })
+        body: JSON.stringify({ todo: `${todoName}` })
     })
         .then(res => res.json()
         )
@@ -14,7 +14,7 @@ export default function addTodo() {
         });
 }
 
-export default function getTodos() {
+export const getTodos = () => {
     fetch("http://localhost:3000/todo")
         .then(res => res.json()
         )
@@ -26,7 +26,7 @@ export default function getTodos() {
         });
 }
 
-export default function getTodo(id) {
+export const getTodo = (id) => {
     fetch(`http://localhost:3000/todo/${id}`)
         .then(res => res.json()
         )
@@ -39,7 +39,7 @@ export default function getTodo(id) {
 }
 
 
-export default function modifyTodo(id) {
+export const modifyTodo = (id) => {
     fetch(`http://localhost:3000/todo/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -55,7 +55,7 @@ export default function modifyTodo(id) {
         });
 }
 
-export default function deleteTodo(id) {
+export const deleteTodo = (id) => {
 
     fetch(`http://localhost:3000/todo/delete/${id}`, {
         method: "DELETE"
