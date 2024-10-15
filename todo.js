@@ -39,16 +39,15 @@ export const getTodo = (id) => {
 }
 
 
-export const modifyTodo = (id) => {
+export const modifyTodo = (id, updated) => {
     fetch(`http://localhost:3000/todo/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ todo: "updated" })
+        body: JSON.stringify({ todo: updated })
     })
         .then(res => res.json()
         )
         .then(data => {
-            console.log(data)
         })
         .catch(err => {
             console.error(err)

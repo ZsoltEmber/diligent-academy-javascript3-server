@@ -18,8 +18,9 @@ export function validateId(id) {
         throw new Error('The ID must be a positive number');
     }
     const todos = JSON.parse(readFileSync("data.json", "utf-8"));
-    const allId = todos.forEach(todo => ids.push(todo.id))
-    if (allId.contains(id)) {
+    const allId = [];
+    todos.forEach(todo => allId.push(Number(todo.id)))
+    if (allId.includes(Number(id))) {
         return Number(id);
     }else{
         throw new Error(`No todo found with ID: ${id}`)
